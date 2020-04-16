@@ -597,7 +597,7 @@ For new endpoints, the `@Endpoint` and `@WebEndpoint` annotations should be pref
 
 
 
-[[production-ready-endpoints-custom-controller]]
+[[production-ready-endpoints-custom-com.zsj.springboot.controller]]
 ==== Controller endpoints
 `@ControllerEndpoint` and `@RestControllerEndpoint` can be used to implement an endpoint that is only exposed by Spring MVC or Spring WebFlux.
 Methods are mapped using the standard annotations for Spring MVC and Spring WebFlux such as `@RequestMapping` and `@GetMapping`, with the endpoint's ID being used as a prefix for the path.
@@ -1678,7 +1678,7 @@ Alternatively, when set to `false`, you can enable instrumentation by adding `@T
 
 	}
 ----
-<1> A controller class to enable timings on every request handler in the controller.
+<1> A com.zsj.springboot.controller class to enable timings on every request handler in the com.zsj.springboot.controller.
 <2> A method to enable for an individual endpoint.
     This is not necessary if you have it on the class, but can be used to further customize the timer for this particular endpoint.
 <3> A method with `longTask = true` to enable a long task timer for the method.

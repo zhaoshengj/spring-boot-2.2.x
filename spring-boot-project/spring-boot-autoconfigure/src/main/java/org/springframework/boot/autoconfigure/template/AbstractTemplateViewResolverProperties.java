@@ -58,7 +58,7 @@ public abstract class AbstractTemplateViewResolverProperties extends AbstractVie
 	private boolean exposeSessionAttributes = false;
 
 	/**
-	 * Whether HttpServletRequest attributes are allowed to override (hide) controller
+	 * Whether HttpServletRequest attributes are allowed to override (hide) com.zsj.springboot.controller
 	 * generated model attributes of the same name.
 	 */
 	private boolean allowRequestOverride = false;
@@ -70,7 +70,7 @@ public abstract class AbstractTemplateViewResolverProperties extends AbstractVie
 	private boolean exposeSpringMacroHelpers = true;
 
 	/**
-	 * Whether HttpSession attributes are allowed to override (hide) controller generated
+	 * Whether HttpSession attributes are allowed to override (hide) com.zsj.springboot.controller generated
 	 * model attributes of the same name.
 	 */
 	private boolean allowSessionOverride = false;

@@ -1105,7 +1105,7 @@ By default, Spring Boot configures Spring MVC with a maximum size of 1MB per fil
 You may override these values, the location to which intermediate data is stored (for example, to the `/tmp` directory), and the threshold past which data is flushed to disk by using the properties exposed in the `MultipartProperties` class.
 For example, if you want to specify that files be unlimited, set the configprop:spring.servlet.multipart.max-file-size[] property to `-1`.
 
-The multipart support is helpful when you want to receive multipart encoded file data as a `@RequestParam`-annotated parameter of type `MultipartFile` in a Spring MVC controller handler method.
+The multipart support is helpful when you want to receive multipart encoded file data as a `@RequestParam`-annotated parameter of type `MultipartFile` in a Spring MVC com.zsj.springboot.controller handler method.
 
 See the {spring-boot-autoconfigure-module-code}/web/servlet/MultipartAutoConfiguration.java[`MultipartAutoConfiguration`] source for more details.
 

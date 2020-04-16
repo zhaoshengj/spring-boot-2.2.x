@@ -75,7 +75,7 @@ import org.springframework.web.util.HtmlUtils;
 
 /**
  * {@link EnableAutoConfiguration Auto-configuration} to render errors via an MVC error
- * controller.
+ * com.zsj.springboot.controller.
  *
  * @author Dave Syer
  * @author Andy Wilkinson

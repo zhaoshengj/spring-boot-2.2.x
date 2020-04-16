@@ -52,7 +52,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Integration tests for the Actuator's MVC {@link ControllerEndpoint controller
+ * Integration tests for the Actuator's MVC {@link ControllerEndpoint com.zsj.springboot.controller
  * endpoints}.
  *
  * @author Phillip Webb

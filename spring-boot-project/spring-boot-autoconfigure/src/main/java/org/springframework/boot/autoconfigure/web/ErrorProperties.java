@@ -29,7 +29,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class ErrorProperties {
 
 	/**
-	 * Path of the error controller.
+	 * Path of the error com.zsj.springboot.controller.
 	 */
 	@Value("${error.path:/error}")
 	private String path = "/error";

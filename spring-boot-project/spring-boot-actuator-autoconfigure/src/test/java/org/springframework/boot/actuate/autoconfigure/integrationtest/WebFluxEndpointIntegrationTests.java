@@ -55,7 +55,7 @@ class WebFluxEndpointIntegrationTests {
 				.withPropertyValues("management.endpoints.web.exposure.include:*").run((context) -> {
 					WebTestClient client = createWebTestClient(context);
 					client.get().uri("/actuator").exchange().expectStatus().isOk().expectBody().jsonPath("_links.beans")
-							.isNotEmpty().jsonPath("_links.restcontroller").isNotEmpty().jsonPath("_links.controller")
+							.isNotEmpty().jsonPath("_links.restcontroller").isNotEmpty().jsonPath("_links.com.zsj.springboot.controller")
 							.isNotEmpty();
 				});
 	}
@@ -65,7 +65,7 @@ class WebFluxEndpointIntegrationTests {
 				.build();
 	}
 
-	@ControllerEndpoint(id = "controller")
+	@ControllerEndpoint(id = "com.zsj.springboot.controller")
 	static class TestControllerEndpoint {
 
 	}

@@ -38,7 +38,7 @@ import org.springframework.web.reactive.function.client.WebClient.RequestHeaders
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 /**
- * Reactive Cloud Foundry security service to handle REST calls to the cloud controller
+ * Reactive Cloud Foundry security service to handle REST calls to the cloud com.zsj.springboot.controller
  * and UAA.
  *
  * @author Madhura Bhave
@@ -99,7 +99,7 @@ class ReactiveCloudFoundrySecurityService {
 				return new CloudFoundryAuthorizationException(Reason.INVALID_TOKEN, "Invalid token", throwable);
 			}
 		}
-		return new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE, "Cloud controller not reachable");
+		return new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE, "Cloud com.zsj.springboot.controller not reachable");
 	}
 
 	private AccessLevel getAccessLevel(Map<?, ?> body) {

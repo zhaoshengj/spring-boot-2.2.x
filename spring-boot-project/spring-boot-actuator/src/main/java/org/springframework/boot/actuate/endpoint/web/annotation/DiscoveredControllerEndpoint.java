@@ -24,7 +24,7 @@ import org.springframework.boot.actuate.endpoint.annotation.AbstractDiscoveredEn
 import org.springframework.boot.actuate.endpoint.annotation.EndpointDiscoverer;
 
 /**
- * A discovered {@link ExposableControllerEndpoint controller endpoint}.
+ * A discovered {@link ExposableControllerEndpoint com.zsj.springboot.controller endpoint}.
  *
  * @author Phillip Webb
  */

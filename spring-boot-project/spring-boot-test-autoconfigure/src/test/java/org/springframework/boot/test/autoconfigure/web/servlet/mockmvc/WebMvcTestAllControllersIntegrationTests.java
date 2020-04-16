@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Tests for {@link WebMvcTest @WebMvcTest} when no explicit controller is defined.
+ * Tests for {@link WebMvcTest @WebMvcTest} when no explicit com.zsj.springboot.controller is defined.
  *
  * @author Phillip Webb
  * @author Stephane Nicoll

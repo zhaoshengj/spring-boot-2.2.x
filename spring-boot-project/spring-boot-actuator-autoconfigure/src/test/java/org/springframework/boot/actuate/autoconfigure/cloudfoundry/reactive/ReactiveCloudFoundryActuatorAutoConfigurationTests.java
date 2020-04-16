@@ -100,7 +100,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void cloudFoundryPlatformActive() {
 		this.contextRunner.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-				"vcap.application.cf_api:https://my-cloud-controller.com").run((context) -> {
+				"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com").run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					EndpointMapping endpointMapping = (EndpointMapping) ReflectionTestUtils.getField(handlerMapping,
 							"endpointMapping");
@@ -118,7 +118,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void cloudfoundryapplicationProducesActuatorMediaType() {
 		this.contextRunner.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-				"vcap.application.cf_api:https://my-cloud-controller.com").run((context) -> {
+				"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com").run((context) -> {
 					WebTestClient webTestClient = WebTestClient.bindToApplicationContext(context).build();
 					webTestClient.get().uri("/cloudfoundryapplication").header("Content-Type",
 							ActuatorMediaType.V2_JSON + ";charset=UTF-8");
@@ -128,7 +128,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void cloudFoundryPlatformActiveSetsApplicationId() {
 		this.contextRunner.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-				"vcap.application.cf_api:https://my-cloud-controller.com").run((context) -> {
+				"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com").run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					Object interceptor = ReflectionTestUtils.getField(handlerMapping, "securityInterceptor");
 					String applicationId = (String) ReflectionTestUtils.getField(interceptor, "applicationId");
@@ -139,14 +139,14 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void cloudFoundryPlatformActiveSetsCloudControllerUrl() {
 		this.contextRunner.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-				"vcap.application.cf_api:https://my-cloud-controller.com").run((context) -> {
+				"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com").run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					Object interceptor = ReflectionTestUtils.getField(handlerMapping, "securityInterceptor");
 					Object interceptorSecurityService = ReflectionTestUtils.getField(interceptor,
 							"cloudFoundrySecurityService");
 					String cloudControllerUrl = (String) ReflectionTestUtils.getField(interceptorSecurityService,
 							"cloudControllerUrl");
-					assertThat(cloudControllerUrl).isEqualTo("https://my-cloud-controller.com");
+					assertThat(cloudControllerUrl).isEqualTo("https://my-cloud-com.zsj.springboot.controller.com");
 				});
 	}
 
@@ -168,7 +168,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@SuppressWarnings("unchecked")
 	void cloudFoundryPathsIgnoredBySpringSecurity() {
 		this.contextRunner.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-				"vcap.application.cf_api:https://my-cloud-controller.com").run((context) -> {
+				"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com").run((context) -> {
 					WebFilterChainProxy chainProxy = context.getBean(WebFilterChainProxy.class);
 					List<SecurityWebFilterChain> filters = (List<SecurityWebFilterChain>) ReflectionTestUtils
 							.getField(chainProxy, "filters");
@@ -204,7 +204,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void allEndpointsAvailableUnderCloudFoundryWithoutEnablingWebIncludes() {
 		this.contextRunner.withBean(TestEndpoint.class, TestEndpoint::new).withPropertyValues("VCAP_APPLICATION:---",
-				"vcap.application.application_id:my-app-id", "vcap.application.cf_api:https://my-cloud-controller.com")
+				"vcap.application.application_id:my-app-id", "vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com")
 				.run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					Collection<ExposableWebEndpoint> endpoints = handlerMapping.getEndpoints();
@@ -217,7 +217,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	@Test
 	void endpointPathCustomizationIsNotApplied() {
 		this.contextRunner.withBean(TestEndpoint.class, TestEndpoint::new).withPropertyValues("VCAP_APPLICATION:---",
-				"vcap.application.application_id:my-app-id", "vcap.application.cf_api:https://my-cloud-controller.com")
+				"vcap.application.application_id:my-app-id", "vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com")
 				.run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					Collection<ExposableWebEndpoint> endpoints = handlerMapping.getEndpoints();
@@ -234,7 +234,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	void healthEndpointInvokerShouldBeCloudFoundryWebExtension() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(HealthEndpointAutoConfiguration.class))
 				.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-						"vcap.application.cf_api:https://my-cloud-controller.com")
+						"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com")
 				.run((context) -> {
 					Collection<ExposableWebEndpoint> endpoints = getHandlerMapping(context).getEndpoints();
 					ExposableWebEndpoint endpoint = endpoints.iterator().next();
@@ -262,7 +262,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	void skipSslValidation() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(HealthEndpointAutoConfiguration.class))
 				.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-						"vcap.application.cf_api:https://my-cloud-controller.com",
+						"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com",
 						"management.cloudfoundry.skip-ssl-validation:true")
 				.run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
@@ -279,7 +279,7 @@ class ReactiveCloudFoundryActuatorAutoConfigurationTests {
 	void sslValidationNotSkippedByDefault() {
 		this.contextRunner.withConfiguration(AutoConfigurations.of(HealthEndpointAutoConfiguration.class))
 				.withPropertyValues("VCAP_APPLICATION:---", "vcap.application.application_id:my-app-id",
-						"vcap.application.cf_api:https://my-cloud-controller.com")
+						"vcap.application.cf_api:https://my-cloud-com.zsj.springboot.controller.com")
 				.run((context) -> {
 					CloudFoundryWebFluxEndpointHandlerMapping handlerMapping = getHandlerMapping(context);
 					Object interceptor = ReflectionTestUtils.getField(handlerMapping, "securityInterceptor");

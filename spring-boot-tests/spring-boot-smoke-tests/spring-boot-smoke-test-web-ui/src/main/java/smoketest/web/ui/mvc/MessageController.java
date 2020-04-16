@@ -69,7 +69,7 @@ public class MessageController {
 
 	@RequestMapping("foo")
 	public String foo() {
-		throw new RuntimeException("Expected exception in controller");
+		throw new RuntimeException("Expected exception in com.zsj.springboot.controller");
 	}
 
 	@GetMapping("delete/{id}")

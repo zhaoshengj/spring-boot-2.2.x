@@ -24,7 +24,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 /**
- * Tests for {@link WebFluxTest @WebFluxTest} when a specific controller is defined.
+ * Tests for {@link WebFluxTest @WebFluxTest} when a specific com.zsj.springboot.controller is defined.
  *
  * @author Stephane Nicoll
  */

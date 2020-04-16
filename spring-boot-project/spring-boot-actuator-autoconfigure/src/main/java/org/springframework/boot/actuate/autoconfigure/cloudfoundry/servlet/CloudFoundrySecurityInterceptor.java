@@ -69,7 +69,7 @@ class CloudFoundrySecurityInterceptor {
 			}
 			if (this.cloudFoundrySecurityService == null) {
 				throw new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE,
-						"Cloud controller URL is not available");
+						"Cloud com.zsj.springboot.controller URL is not available");
 			}
 			if (HttpMethod.OPTIONS.matches(request.getMethod())) {
 				return SUCCESS;

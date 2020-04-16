@@ -116,7 +116,7 @@ class WebMvcEndpointIntegrationTests {
 		TestPropertyValues.of("management.endpoints.web.exposure.include=*").applyTo(this.context);
 		MockMvc mockMvc = doCreateMockMvc();
 		mockMvc.perform(get("/actuator").accept("*/*")).andExpect(status().isOk()).andExpect(jsonPath("_links",
-				both(hasKey("beans")).and(hasKey("servlet")).and(hasKey("restcontroller")).and(hasKey("controller"))));
+				both(hasKey("beans")).and(hasKey("servlet")).and(hasKey("restcontroller")).and(hasKey("com.zsj.springboot.controller"))));
 	}
 
 	private MockMvc createSecureMockMvc() {
@@ -172,7 +172,7 @@ class WebMvcEndpointIntegrationTests {
 
 	}
 
-	@ControllerEndpoint(id = "controller")
+	@ControllerEndpoint(id = "com.zsj.springboot.controller")
 	static class TestControllerEndpoint {
 
 	}

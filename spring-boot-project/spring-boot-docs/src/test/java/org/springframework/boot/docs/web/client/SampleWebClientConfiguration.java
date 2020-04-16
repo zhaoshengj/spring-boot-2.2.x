@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * A sample {@link SpringBootConfiguration @ConfigurationProperties} with an example
- * controller.
+ * com.zsj.springboot.controller.
  *
  * @author Stephane Nicoll
  */

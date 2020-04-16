@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@Description("A controller for handling requests for hello messages")
+@Description("A com.zsj.springboot.controller for handling requests for hello messages")
 public class SampleController {
 
 	private final HelloWorldService helloWorldService;

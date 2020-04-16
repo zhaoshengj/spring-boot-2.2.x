@@ -49,7 +49,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
  */
 class CloudFoundrySecurityServiceTests {
 
-	private static final String CLOUD_CONTROLLER = "https://my-cloud-controller.com";
+	private static final String CLOUD_CONTROLLER = "https://my-cloud-com.zsj.springboot.controller.com";
 
 	private static final String CLOUD_CONTROLLER_PERMISSIONS = CLOUD_CONTROLLER + "/v2/apps/my-app-id/permissions";
 

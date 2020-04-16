@@ -33,7 +33,7 @@ import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.util.ClassUtils;
 
 /**
- * {@link EndpointDiscoverer} for {@link ExposableControllerEndpoint controller
+ * {@link EndpointDiscoverer} for {@link ExposableControllerEndpoint com.zsj.springboot.controller
  * endpoints}.
  *
  * @author Phillip Webb

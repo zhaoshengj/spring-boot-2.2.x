@@ -54,7 +54,7 @@ public class ErrorPage {
 
 	/**
 	 * The path to render (usually implemented as a forward), starting with "/". A custom
-	 * controller or servlet path can be used, or if the server supports it, a template
+	 * com.zsj.springboot.controller or servlet path can be used, or if the server supports it, a template
 	 * path (e.g. "/error.jsp").
 	 * @return the path that will be rendered for this error
 	 */

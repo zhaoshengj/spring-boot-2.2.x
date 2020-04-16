@@ -67,7 +67,7 @@ class CloudFoundrySecurityInterceptor {
 		}
 		if (this.cloudFoundrySecurityService == null) {
 			return Mono.error(new CloudFoundryAuthorizationException(Reason.SERVICE_UNAVAILABLE,
-					"Cloud controller URL is not available"));
+					"Cloud com.zsj.springboot.controller URL is not available"));
 		}
 		return check(exchange, id).then(SUCCESS).doOnError(this::logError).onErrorResume(this::getErrorResponse);
 	}

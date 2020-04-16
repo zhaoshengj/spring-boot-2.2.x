@@ -55,7 +55,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 class WebMvcEndpointChildContextConfiguration {
 
 	/*
-	 * The error controller is present but not mapped as an endpoint in this context
+	 * The error com.zsj.springboot.controller is present but not mapped as an endpoint in this context
 	 * because of the DispatcherServlet having had its HandlerMapping explicitly disabled.
 	 * So we expose the same feature but only for machine endpoints.
 	 */

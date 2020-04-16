@@ -41,11 +41,11 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class ReactiveCloudFoundrySecurityServiceTests {
 
-	private static final String CLOUD_CONTROLLER = "/my-cloud-controller.com";
+	private static final String CLOUD_CONTROLLER = "/my-cloud-com.zsj.springboot.controller.com";
 
 	private static final String CLOUD_CONTROLLER_PERMISSIONS = CLOUD_CONTROLLER + "/v2/apps/my-app-id/permissions";
 
-	private static final String UAA_URL = "https://my-cloud-controller.com/uaa";
+	private static final String UAA_URL = "https://my-cloud-com.zsj.springboot.controller.com/uaa";
 
 	private ReactiveCloudFoundrySecurityService securityService;
 
@@ -159,7 +159,7 @@ class ReactiveCloudFoundrySecurityServiceTests {
 		StepVerifier.create(this.securityService.fetchTokenKeys())
 				.consumeNextWith((tokenKeys) -> assertThat(tokenKeys.get("test-key")).isEqualTo(tokenKeyValue))
 				.expectComplete().verify();
-		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-controller.com/info"));
+		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-com.zsj.springboot.controller.com/info"));
 		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-uaa.com/token_keys"));
 	}
 
@@ -176,7 +176,7 @@ class ReactiveCloudFoundrySecurityServiceTests {
 		});
 		StepVerifier.create(this.securityService.fetchTokenKeys())
 				.consumeNextWith((tokenKeys) -> assertThat(tokenKeys).hasSize(0)).expectComplete().verify();
-		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-controller.com/info"));
+		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-com.zsj.springboot.controller.com/info"));
 		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-uaa.com/token_keys"));
 	}
 
@@ -192,7 +192,7 @@ class ReactiveCloudFoundrySecurityServiceTests {
 						(throwable) -> assertThat(((CloudFoundryAuthorizationException) throwable).getReason())
 								.isEqualTo(Reason.SERVICE_UNAVAILABLE))
 				.verify();
-		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-controller.com/info"));
+		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-cloud-com.zsj.springboot.controller.com/info"));
 		expectRequest((request) -> assertThat(request.getPath()).isEqualTo("/my-uaa.com/token_keys"));
 	}
 

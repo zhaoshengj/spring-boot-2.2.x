@@ -40,7 +40,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * Integration tests for the Actuator's WebFlux {@link ControllerEndpoint controller
+ * Integration tests for the Actuator's WebFlux {@link ControllerEndpoint com.zsj.springboot.controller
  * endpoints}.
  *
  * @author Phillip Webb

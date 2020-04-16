@@ -66,7 +66,7 @@ class SampleActuatorCustomSecurityApplicationTests extends AbstractSampleActuato
 		assertThat(entity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR);
 		@SuppressWarnings("unchecked")
 		Map<String, Object> body = entity.getBody();
-		assertThat((String) body.get("message")).contains("Expected exception in controller");
+		assertThat((String) body.get("message")).contains("Expected exception in com.zsj.springboot.controller");
 	}
 
 	@Test

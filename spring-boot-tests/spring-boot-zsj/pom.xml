@@ -10,6 +10,27 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<artifactId>spring-boot-zsj</artifactId>
-
+	<packaging>pom</packaging>
+	<modules>
+		<module>spring-boot-mvc</module>
+	</modules>
+	<properties>
+		<main.basedir>${basedir}/../../..</main.basedir>
+	</properties>
+	<dependencies>
+		<!-- Compile -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>

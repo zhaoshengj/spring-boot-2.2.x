@@ -1970,9 +1970,9 @@ If you have not yet developed a Spring Boot web application, you can follow the 
 
 [[boot-features-spring-mvc]]
 === The "`Spring Web MVC Framework`"
-The {spring-framework-docs}web.html#mvc[Spring Web MVC framework] (often referred to as simply "`Spring MVC`") is a rich "`model view controller`" web framework.
+The {spring-framework-docs}web.html#mvc[Spring Web MVC framework] (often referred to as simply "`Spring MVC`") is a rich "`model view com.zsj.springboot.controller`" web framework.
 Spring MVC lets you create special `@Controller` or `@RestController` beans to handle incoming HTTP requests.
-Methods in your controller are mapped to HTTP by using `@RequestMapping` annotations.
+Methods in your com.zsj.springboot.controller are mapped to HTTP by using `@RequestMapping` annotations.
 
 The following code shows a typical `@RestController` that serves JSON data:
 
@@ -2277,7 +2277,7 @@ TIP: The `BasicErrorController` can be used as a base class for a custom `ErrorC
 This is particularly useful if you want to add a handler for a new content type (the default is to handle `text/html` specifically and provide a fallback for everything else).
 To do so, extend `BasicErrorController`, add a public method with a `@RequestMapping` that has a `produces` attribute, and create a bean of your new type.
 
-You can also define a class annotated with `@ControllerAdvice` to customize the JSON document to return for a particular controller and/or exception type, as shown in the following example:
+You can also define a class annotated with `@ControllerAdvice` to customize the JSON document to return for a particular com.zsj.springboot.controller and/or exception type, as shown in the following example:
 
 [source,java,indent=0,subs="verbatim,quotes,attributes"]
 ----
@@ -2302,7 +2302,7 @@ You can also define a class annotated with `@ControllerAdvice` to customize the 
 	}
 ----
 
-In the preceding example, if `YourException` is thrown by a controller defined in the same package as `AcmeController`, a JSON representation of the `CustomErrorType` POJO is used instead of the `ErrorAttributes` representation.
+In the preceding example, if `YourException` is thrown by a com.zsj.springboot.controller defined in the same package as `AcmeController`, a JSON representation of the `CustomErrorType` POJO is used instead of the `ErrorAttributes` representation.
 
 
 
@@ -2359,7 +2359,7 @@ For more complex mappings, you can also add beans that implement the `ErrorViewR
 ----
 
 
-You can also use regular Spring MVC features such as {spring-framework-docs}web.html#mvc-exceptionhandlers[`@ExceptionHandler` methods] and {spring-framework-docs}web.html#mvc-ann-controller-advice[`@ControllerAdvice`].
+You can also use regular Spring MVC features such as {spring-framework-docs}web.html#mvc-exceptionhandlers[`@ExceptionHandler` methods] and {spring-framework-docs}web.html#mvc-ann-com.zsj.springboot.controller-advice[`@ControllerAdvice`].
 The `ErrorController` then picks up any unhandled exceptions.
 
 
@@ -2430,7 +2430,7 @@ Note that doing so disables the `ObjectMapper` customization described earlier.
 https://en.wikipedia.org/wiki/Cross-origin_resource_sharing[Cross-origin resource sharing] (CORS) is a https://www.w3.org/TR/cors/[W3C specification] implemented by https://caniuse.com/#feat=cors[most browsers] that lets you specify in a flexible way what kind of cross-domain requests are authorized., instead of using some less secure and less powerful approaches such as IFRAME or JSONP.
 
 As of version 4.2, Spring MVC {spring-framework-docs}web.html#mvc-cors[supports CORS].
-Using {spring-framework-docs}web.html#mvc-cors-controller[controller method CORS configuration] with {spring-framework-api}/web/bind/annotation/CrossOrigin.html[`@CrossOrigin`] annotations in your Spring Boot application does not require any specific configuration.
+Using {spring-framework-docs}web.html#mvc-cors-com.zsj.springboot.controller[com.zsj.springboot.controller method CORS configuration] with {spring-framework-api}/web/bind/annotation/CrossOrigin.html[`@CrossOrigin`] annotations in your Spring Boot application does not require any specific configuration.
 {spring-framework-docs}web.html#mvc-cors-global[Global CORS configuration] can be defined by registering a `WebMvcConfigurer` bean with a customized `addCorsMappings(CorsRegistry)` method, as shown in the following example:
 
 [source,java,indent=0]
@@ -6305,7 +6305,7 @@ TIP: A list of the auto-configuration settings that are enabled by `@WebMvcTest`
 
 TIP: If you need to register extra components, such as the Jackson `Module`, you can import additional configuration classes by using `@Import` on your test.
 
-Often, `@WebMvcTest` is limited to a single controller and is used in combination with `@MockBean` to provide mock implementations for required collaborators.
+Often, `@WebMvcTest` is limited to a single com.zsj.springboot.controller and is used in combination with `@MockBean` to provide mock implementations for required collaborators.
 
 `@WebMvcTest` also auto-configures `MockMvc`.
 Mock MVC offers a powerful way to quickly test MVC controllers without needing to start a full HTTP server.
@@ -6405,7 +6405,7 @@ TIP: A list of the auto-configurations that are enabled by `@WebFluxTest` can be
 
 TIP: If you need to register extra components, such as Jackson `Module`, you can import additional configuration classes using `@Import` on your test.
 
-Often, `@WebFluxTest` is limited to a single controller and used in combination with the `@MockBean` annotation to provide mock implementations for required collaborators.
+Often, `@WebFluxTest` is limited to a single com.zsj.springboot.controller and used in combination with the `@MockBean` annotation to provide mock implementations for required collaborators.
 
 `@WebFluxTest` also auto-configures {spring-framework-docs}testing.html#webtestclient[`WebTestClient`], which offers a powerful way to quickly test WebFlux controllers without needing to start a full HTTP server.
 

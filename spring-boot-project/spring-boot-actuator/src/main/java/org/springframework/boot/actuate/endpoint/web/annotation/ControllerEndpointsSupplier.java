@@ -19,7 +19,7 @@ package org.springframework.boot.actuate.endpoint.web.annotation;
 import org.springframework.boot.actuate.endpoint.EndpointsSupplier;
 
 /**
- * {@link EndpointsSupplier} for {@link ExposableControllerEndpoint controller endpoints}.
+ * {@link EndpointsSupplier} for {@link ExposableControllerEndpoint com.zsj.springboot.controller endpoints}.
  *
  * @author Phillip Webb
  * @since 2.0.0
