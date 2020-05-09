@@ -302,6 +302,18 @@ public class SpringApplication {
 	 * {@link ApplicationContext}.
 	 * @param args the application arguments (usually passed from a Java main method)
 	 * @return a running {@link ApplicationContext}
+	 *
+	 * 其实这个方法我们可以简单的总结下步骤为 >
+	 * 1. 配置属性 >
+	 * 2. 获取监听器，发布应用开始启动事件 >
+	 * 3. 初始化输入参数 >
+	 * 4. 配置环境，输出 banner >
+	 * 5. 创建上下文 >
+	 * 6. 预处理上下文 >
+	 * 7. 刷新上下文 >
+	 * 8. 再刷新上下文 >
+	 * 9. 发布应用已经启动事件 >
+	 * 10. 发布应用启动完成事件
 	 */
 	public ConfigurableApplicationContext run(String... args) {
 
@@ -311,15 +323,25 @@ public class SpringApplication {
 		ConfigurableApplicationContext context = null;
 		Collection<SpringBootExceptionReporter> exceptionReporters = new ArrayList<>();
 		// <2>配置 headless 属性
+		//设置系统属性『java.awt.headless』，为true则启用headless模式支持
 		configureHeadlessProperty();
 
 		// 获得 SpringApplicationRunListener 的数组，并启动监听
+		//通过*SpringFactoriesLoader*检索*META-INF/spring.factories*，
+		//找到声明的所有SpringApplicationRunListener的实现类并将其实例化，
+		//之后逐个调用其started()方法，广播SpringBoot要开始执行了
 		SpringApplicationRunListeners listeners = getRunListeners(args);
+
+		//发布应用开始启动事件
 		listeners.starting();
 		try {
 			// <3>创建  ApplicationArguments 对象
 			ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
 			// <4>加载属性配置。执行完成后，所有的 environment 的属性都会加载进来，包括 application.properties 和外部的属性配置。
+
+			//创建并配置当前SpringBoot应用将要使用的Environment（包括配置要使用的PropertySource以及Profile）,
+			//并遍历调用所有的SpringApplicationRunListener的environmentPrepared()方法，广播Environment准备完毕。
+
 			ConfigurableEnvironment environment = prepareEnvironment(listeners, applicationArguments);
 			configureIgnoreBeanInfo(environment);
 			// <5> 打印 Spring Banner
@@ -328,10 +350,16 @@ public class SpringApplication {
 			context = createApplicationContext();
 
 			// <7> 异常报告器
+			//通过*SpringFactoriesLoader*检索*META-INF/spring.factories*，获取并实例化异常分析器
 			exceptionReporters = getSpringFactoriesInstances(SpringBootExceptionReporter.class,
 					new Class[] { ConfigurableApplicationContext.class }, context);
 
 			// <8> 主要是调用所有初始化类的 initialize 方法
+
+			//为ApplicationContext加载environment，之后逐个执行ApplicationContextInitializer的initialize()方法来进一步封装ApplicationContext，
+			//并调用所有的SpringApplicationRunListener的contextPrepared()方法，【EventPublishingRunListener只提供了一个空的contextPrepared()方法】，
+			//之后初始化IoC容器，并调用SpringApplicationRunListener的contextLoaded()方法，广播ApplicationContext的IoC加载完成，
+			//这里就包括通过**@EnableAutoConfiguration**导入的各种自动配置类。
 			prepareContext(context, environment, listeners, applicationArguments, printedBanner);
 
 			// <9> 初始化 Spring 容器。
@@ -634,6 +662,10 @@ public class SpringApplication {
 		Class<?> contextClass = this.applicationContextClass;
 		if (contextClass == null) {
 			try {
+				//webApplicationType 来判断创建哪种类型的 Servlet,
+				// 代码中分别对应着 Web 类型(SERVLET),
+				// 响应式 Web 类型（REACTIVE),
+				// 非 Web 类型（default),我们建立的是 Web 类型，所以肯定实例化 DEFAULT_SERVLET_WEB_CONTEXT_CLASS 指定的类
 				switch (this.webApplicationType) {
 				case SERVLET:
 					contextClass = Class.forName(DEFAULT_SERVLET_WEB_CONTEXT_CLASS);
